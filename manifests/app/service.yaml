@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-app-svc
+  namespace: todo-app
+spec:
+  type: NodePort           # Exposes app outside the cluster
+  selector:
+    app: todo-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30080      # You'll access app at this port
