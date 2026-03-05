@@ -10,7 +10,9 @@ spec:
   source:
     repoURL: https://github.com/Mukul9090/Gitops-todo
     targetRevision: HEAD
-    path: manifests              # folder containing all your yamls
+    path: manifests
+    directory:
+      recurse: true                # folder containing all your yamls
 
   # WHERE to deploy
   destination:
