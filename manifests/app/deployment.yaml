@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: todo-app:v1
-          imagePullPolicy: Never          # ← use local minikube image
+          image: mukul1599/todo-app:v1
+          imagePullPolicy: Always          # ← use local minikube image
           ports:
             - containerPort: 3000
           env:
