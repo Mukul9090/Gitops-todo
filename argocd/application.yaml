@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app
+  namespace: argocd
+spec:
+  project: default
+
+  # WHERE to get manifests from
+  source:
+    repoURL: https://github.com/Mukul9090/Gitops-todo
+    targetRevision: HEAD
+    path: manifests              # folder containing all your yamls
+
+  # WHERE to deploy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: todo-app
+
+  syncPolicy:
+    automated:
+      prune: true                # delete resources removed from git
+      selfHeal: true             # fix manual changes made outside git
+    syncOptions:
+      - CreateNamespace=true
